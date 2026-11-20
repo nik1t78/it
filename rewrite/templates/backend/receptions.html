@@ -1,0 +1,10 @@
+{% extends 'backend/layout.html' %}
+{% block content %}
+<h1>Обращения граждан</h1>
+<table class="grid">
+<tr><th>Дата</th><th>ФИО</th><th>Тема</th><th>Текст</th></tr>
+{% for r in items %}
+<tr><td>{{ r.date.strftime('%d.%m.%Y') }}</td><td>{{ r.fio }}</td><td>{{ r.subject }}</td><td>{{ r.body_text }}</td></tr>
+{% endfor %}
+</table>
+{% endblock %}

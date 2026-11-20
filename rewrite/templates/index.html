@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="hero">
+  <h1>Добро пожаловать!</h1>
+  <p>Управление социальной политики Липецкой области</p>
+</div>
+
+<div class="columns">
+  <section class="col-main">
+    <h2>Новости</h2>
+    {% for n in news %}
+      <article class="news-item">
+        <a href="/news/{{ n.id }}"><h3>{{ n.name }}</h3></a>
+        <time>{{ n.created_at.strftime('%d.%m.%Y') }}</time>
+        <p>{{ n.preview_text or '' }}</p>
+      </article>
+    {% else %}
+      <p>Новостей пока нет.</p>
+    {% endfor %}
+    <p><a href="/news/">Все новости →</a></p>
+  </section>
+
+  <aside class="col-side">
+    {% if poll %}
+    <div class="widget">
+      <h3>{{ poll.title }}</h3>
+      <form method="post" action="/poll/vote">
+        <p>{{ poll.question }}</p>
+        {% for a in poll.answers %}
+          <label><input type="radio" name="answer_id" value="{{ a.id }}"> {{ a.title }} ({{ a.votes|length }})</label><br>
+        {% endfor %}
+        <button type="submit">Голосовать</button>
+      </form>
+    </div>
+    {% endif %}
+    {% for b in banners %}
+      <a class="banner" href="{{ b.url }}">{{ b.title }}</a>
+    {% endfor %}
+  </aside>
+</div>
+{% endblock %}

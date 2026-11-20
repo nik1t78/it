@@ -1,0 +1,4 @@
+body{margin:0;background:#0b4f8a;color:#fff;font-family:Arial,sans-serif}
+.menu{display:grid;grid-template-columns:repeat(2,1fr);gap:24px;padding:48px}
+.menu div{background:#fff;border-radius:12px;padding:40px;text-align:center}
+.menu a{color:#0b4f8a;font-size:32px;text-decoration:none}

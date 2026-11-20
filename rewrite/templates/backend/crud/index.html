@@ -1,0 +1,20 @@
+{% extends 'backend/layout.html' %}
+{% block title %}{{ label }}{% endblock %}
+{% block content %}
+<h1>{{ label }}</h1>
+<p><a class="btn" href="/backend/{{ name }}/create">+ Создать</a></p>
+<table class="grid">
+<tr><th>ID</th>{% for f in fields %}<th>{{ f }}</th>{% endfor %}<th></th></tr>
+{% for it in items %}
+<tr>
+  <td>{{ it.id }}</td>
+  {% for f in fields %}<td>{{ it[f] if it[f] is not none else '' }}</td>{% endfor %}
+  <td>
+    <a href="/backend/{{ name }}/{{ it.id }}/edit">Изменить</a>
+    <form style="display:inline" method="post" action="/backend/{{ name }}/{{ it.id }}/delete">
+      <button type="submit">Удалить</button></form>
+  </td>
+</tr>
+{% endfor %}
+</table>
+{% endblock %}
