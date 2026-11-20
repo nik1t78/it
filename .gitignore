@@ -1,0 +1,13 @@
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+*.swp
+*.swo
+error_log
+*.log
+*.tmp
+*.map
+__pycache__/
+*.pyc
+*.zip
