@@ -15,6 +15,6 @@ Route::prefix('admin')->name('admin.')->group(function():void {
  Route::middleware(['auth','role:admin,editor'])->group(function():void {
   Route::get('/',DashboardController::class)->name('dashboard');
   Route::post('/logout',[AdminLoginController::class,'destroy'])->name('logout');
-  Route::resource('news',AdminNewsController::class)->except(['show'])->names('news');
+  Route::resource('news',AdminNewsController::class)->except(['show']);
  });
 });
