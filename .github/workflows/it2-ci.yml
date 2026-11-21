@@ -20,6 +20,8 @@ jobs:
         working-directory: it-2.0
     steps:
       - uses: actions/checkout@v4
+      - name: Prepare local environment file
+        run: cp .env.example .env
       - name: Set up PHP
         uses: shivammathur/setup-php@v2
         with:
@@ -32,5 +34,5 @@ jobs:
         run: composer install --no-interaction --prefer-dist
       - name: Check PHP syntax
         run: find app bootstrap config database public routes tests -type f -name '*.php' -print0 | xargs -0 -n1 php -l
-      - name: Run feature tests with warnings visible
-        run: composer test -- --display-warnings
+      - name: Run feature tests
+        run: composer test
