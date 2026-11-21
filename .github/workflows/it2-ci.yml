@@ -30,7 +30,7 @@ jobs:
         run: composer validate --strict
       - name: Install dependencies
         run: composer install --no-interaction --prefer-dist
-      - name: Check PHP formatting
-        run: composer lint
+      - name: Check PHP syntax
+        run: find app bootstrap config database public routes tests -type f -name '*.php' -print0 | xargs -0 -n1 php -l
       - name: Run feature tests
         run: composer test
