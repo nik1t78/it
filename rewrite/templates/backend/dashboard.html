@@ -1,7 +1,0 @@
-{% extends 'backend/layout.html' %}
-{% block content %}
-<h1>Панель управления</h1>
-<div class="stats">
-  {% for k,v in stats.items() %}<div class="stat"><b>{{ v }}</b><span>{{ k }}</span></div>{% endfor %}
-</div>
-{% endblock %}
