@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+{% block title %}{{ element.name }}{% endblock %}
+{% block content %}
+<article class="news-detail">
+  <h1>{{ element.name }}</h1>
+  <time>{{ element.created_at.strftime('%d.%m.%Y') }}</time>
+  <div class="body">{{ element.detail_text | safe }}</div>
+  <p><a href="/news/">← Все новости</a></p>
+</article>
+{% endblock %}

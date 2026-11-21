@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+{% block title %}Вопрос-ответ{% endblock %}
+{% block content %}
+<h1>Вопрос-ответ</h1>
+<p><a class="btn" href="/faq/ask">Задать вопрос</a></p>
+{% for f in items %}
+<div class="faq-item">
+  <h3>{{ f.question }}</h3>
+  <p>{{ f.answer }}</p>
+  <small>Ответил(а): {{ f.a_author }}, {{ f.a_date.strftime('%d.%m.%Y') if f.a_date }}</small>
+</div>
+{% else %}<p>Ответов пока нет.</p>{% endfor %}
+{% endblock %}

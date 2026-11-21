@@ -1,0 +1,9 @@
+<?php
+/**
+$this->breadcrumbs=array(
+	$this->module->id,
+);**/
+
+?>
+
+                <?php echo $model->body; ?>

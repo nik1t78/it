@@ -1,0 +1,14 @@
+Allow from all
+
+<IfModule mod_rewrite.c>
+RewriteEngine on
+</ifModule>
+
+<Files *.php>
+Order Deny,Allow
+Allow from all
+Satisfy Any
+AddType application/x-httpd-php .php
+#SetHandler application/x-httpd-php
+ForceType application/x-httpd-php
+</Files>

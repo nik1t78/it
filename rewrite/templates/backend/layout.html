@@ -1,0 +1,26 @@
+<!DOCTYPE html><html lang="ru"><head><meta charset="UTF-8"><title>Админка — {% block title %}{% endblock %}</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}"></head>
+<body class="backend">
+<header class="site-header"><div class="container header-row">
+  <strong>Админка USN Липецкой области</strong>
+  <span>{{ current_user.full_name or current_user.login }} · <a href="/backend/logout">Выход</a></span>
+</div></header>
+<div class="container columns">
+<nav class="col-side admin-nav">
+  <ul>
+    <li><a href="/backend/">Панель</a></li>
+    <li><a href="/backend/pages">Страницы</a></li>
+    <li><a href="/backend/menu">Меню</a></li>
+    <li><a href="/backend/news">Новости</a></li>
+    <li><a href="/backend/banners">Баннеры</a></li>
+    <li><a href="/backend/textblocks">Текстовые блоки</a></li>
+    <li><a href="/backend/faq">Вопросы</a></li>
+    <li><a href="/backend/receptions">Обращения</a></li>
+    <li><a href="/backend/settings">Настройки</a></li>
+  </ul>
+</nav>
+<main class="col-main">
+{% with messages = get_flashed_messages() %}{% for m in messages %}<div class="flash">{{ m }}</div>{% endfor %}{% endwith %}
+{% block content %}{% endblock %}
+</main></div>
+</body></html>

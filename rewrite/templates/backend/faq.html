@@ -1,0 +1,17 @@
+{% extends 'backend/layout.html' %}
+{% block content %}
+<h1>Вопросы-ответы</h1>
+{% for f in items %}
+<div class="faq-item">
+  <h3>{{ f.question }} {% if not f.approved %}<em>(новый)</em>{% endif %}</h3>
+  <p>От: {{ f.q_author }} &lt;{{ f.q_email }}&gt;, {{ f.q_date.strftime('%d.%m.%Y') }}</p>
+  {% if f.approved %}<p>Ответ: {{ f.answer }}</p>
+  {% else %}
+  <form method="post" action="/backend/faq/{{ f.id }}/approve" class="form">
+    <label>Ответ <textarea name="answer" rows="4"></textarea></label>
+    <button type="submit">Опубликовать ответ</button>
+  </form>
+  {% endif %}
+</div>
+{% endfor %}
+{% endblock %}

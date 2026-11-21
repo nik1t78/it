@@ -1,0 +1,15 @@
+{% extends 'backend/layout.html' %}
+{% block title %}{{ label }}{% endblock %}
+{% block content %}
+<h1>{{ 'Редактирование: ' ~ obj[fields[0]] if obj else 'Создание' }} — {{ label }}</h1>
+<form method="post" class="form">
+  {% for f in fields %}
+    {% if f in ('anons','body','preview_text','detail_text','question','answer','value') %}
+      <label>{{ f }}<textarea name="{{ f }}" rows="8">{{ obj[f] if obj else '' }}</textarea></label>
+    {% else %}
+      <label>{{ f }}<input name="{{ f }}" value="{{ obj[f] if obj else '' }}"></label>
+    {% endif %}
+  {% endfor %}
+  <button type="submit">Сохранить</button>
+</form>
+{% endblock %}
